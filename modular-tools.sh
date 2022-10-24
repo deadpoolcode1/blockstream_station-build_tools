@@ -21,6 +21,7 @@ setup()
  sudo apt-get -y install vim
  sudo snap install --classic code
  code --install-extension ms-vscode.cpptools
+ sudo apt-get install libzmq3-dev
 }
 
 #gets latest code update
