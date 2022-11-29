@@ -22,6 +22,7 @@ setup()
  sudo snap install --classic code
  code --install-extension ms-vscode.cpptools
  sudo apt-get install libzmq3-dev
+ sudo apt-get install libmysqlclient-dev
 }
 
 #gets latest code update
