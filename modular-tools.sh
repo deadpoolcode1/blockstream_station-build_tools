@@ -25,11 +25,12 @@ setup()
  sudo apt-get install libmysqlclient-dev
 }
 
+REPOSRC="git@github.com:deadpoolcode1/blockstream_station-main.git"
+LOCALREPO="main"
 #gets latest code update
 get_update()
 {
- repo init -u git@github.com:deadpoolcode1/blockstream_station_repo.git -b master
- repo sync
+git clone "$REPOSRC" "$LOCALREPO" 2> /dev/null || (cd "$LOCALREPO" ; git pull)
 }
 
 #build image
@@ -50,6 +51,16 @@ deploy_image_to_device()
 	echo "TBD"
 }
 
+peta-export()
+{
+	source /bsil-vm2-data/petalinux/petalinux_v2022.2/settings.sh
+}
+
+peta-cd()
+{
+	cd /bsil-vm2-data/petalinux/peta_prj_empty_v2022_2/
+}
+
 help()
 {
 	echo $BASH_SOURCE "<parameter>"
@@ -58,6 +69,9 @@ help()
 	echo "build_image_x86 - build image for PC"
 	echo "build_image_cross - build image using cross compiler for the board"
 	echo "deploy_image_to_device - copy image to the embedded device"
+	echo "**************PETALINUX**********************************"
+	echo "peta-export - export peta linux command line"
+	echo "peta-cd - change directory to perat linux project"
 }
 
 
