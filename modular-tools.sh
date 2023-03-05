@@ -58,8 +58,25 @@ peta-export()
 
 peta-cd()
 {
-	cd /bsil-vm2-data/petalinux/peta_prj_empty_v2022_2/
+	cd /bsil-vm2-data/petalinux/peta_ilan_empty_v2022_2/
 }
+
+peta-build-sdk()
+{
+	pushd .
+	peta-cd
+	petalinux-build --sdk
+	popd
+}
+
+peta-linux-build()
+{
+        pushd .
+        peta-cd
+        petalinux-build
+        popd
+}
+
 
 help()
 {
@@ -72,6 +89,8 @@ help()
 	echo "**************PETALINUX**********************************"
 	echo "peta-export - export peta linux command line"
 	echo "peta-cd - change directory to perat linux project"
+	echo "peta-build-sdk - building sdk for peta linux"
+	echo "peta-linux-build - building peta linux umage"
 }
 
 
